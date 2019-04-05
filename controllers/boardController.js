@@ -110,14 +110,15 @@ exports.index = (req, res, next) => {
         break;
     }
   }
+
   function isValidBoard(board) {
     let characters = board.match(/[ox ]/g);
 
     if (characters.length !== 9) {
       return false;
+    } else {
+      return isProperTurn(characters) ? true : false;
     }
-
-    return isProperTurn(characters) ? true : false;
   }
 
   function isProperTurn(characters) {
