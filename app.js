@@ -8,7 +8,7 @@ const app = express();
 router(app);
 
 const server = http.createServer(app);
-const port = 5000;
+const port = process.env.PORT || 3000;
 
 server.listen(port);
 console.log(`NodeJS Server running on port ${port}.`);
