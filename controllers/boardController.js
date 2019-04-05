@@ -1,36 +1,3 @@
-function isValidBoard(board) {
-  let characters = board.match(/[ox ]/g);
-
-  if (characters.length !== 9) {
-    return false;
-  }
-
-  return isProperTurn(characters) ? true : false;
-}
-
-function isProperTurn(characters) {
-  let oCounter = 0,
-    xCounter = 0;
-
-  for (let i = 0; i < characters.length; i++) {
-    if (characters[i] === "x") {
-      xCounter += 1;
-    } else if (characters[i] === "o") {
-      oCounter += 1;
-    }
-  }
-
-  if (
-    oCounter > xCounter ||
-    oCounter + xCounter === 9 ||
-    xCounter > oCounter + 1
-  ) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
 const winRows = [
   [0, 1, 2],
   [3, 4, 5],
@@ -141,6 +108,38 @@ exports.index = (req, res, next) => {
       case boardArray[8] == " ":
         return 8;
         break;
+    }
+  }
+  function isValidBoard(board) {
+    let characters = board.match(/[ox ]/g);
+
+    if (characters.length !== 9) {
+      return false;
+    }
+
+    return isProperTurn(characters) ? true : false;
+  }
+
+  function isProperTurn(characters) {
+    let oCounter = 0,
+      xCounter = 0;
+
+    for (let i = 0; i < characters.length; i++) {
+      if (characters[i] === "x") {
+        xCounter += 1;
+      } else if (characters[i] === "o") {
+        oCounter += 1;
+      }
+    }
+
+    if (
+      oCounter > xCounter ||
+      oCounter + xCounter === 9 ||
+      xCounter > oCounter + 1
+    ) {
+      return false;
+    } else {
+      return true;
     }
   }
 };
