@@ -18,7 +18,7 @@ exports.index = (req, res, next) => {
 
   if (!isValidBoard(board)) {
     res.status(400);
-    res.send("Invalid board");
+    res.json({ board: "Invalid board" });
   } else {
     checkForWinOrBlock();
     switch (true) {
@@ -50,7 +50,7 @@ exports.index = (req, res, next) => {
     //Define move
     boardArray[moveIndex] = "o";
 
-    res.send(boardArray.join("").replace(/ /g, "&nbsp;"));
+    res.json({ board: boardArray.join("").replace(/ /g, "&nbsp;") });
   }
 
   function checkForWinOrBlock() {
