@@ -1,4 +1,5 @@
 start();
+
 function start() {
   const cells = document.querySelectorAll("td");
   const newGame = document.createElement("button");
@@ -31,7 +32,6 @@ function start() {
 }
 
 function makeAMove(cell) {
-  console.log("make a move");
   cell.innerHTML = "X";
   cell.classList.add("x-cell");
 
@@ -46,7 +46,6 @@ function makeAMove(cell) {
 }
 
 function computerPlays(board) {
-  console.log("computer plays");
   fetch(`http://localhost:5000/?board=${board}`)
     .then(response => {
       return response.json();
@@ -145,7 +144,6 @@ function checkGameStats(board) {
 }
 
 function freezeGame(stats) {
-  console.log(stats);
   let messageContainer = document.getElementById("messages");
   messageContainer.innerHTML = "";
   let message = document.createElement("h1");
