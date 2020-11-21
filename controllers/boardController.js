@@ -23,24 +23,19 @@ exports.index = (req, res, next) => {
     checkForWinOrBlock();
     switch (true) {
       case "win" in move:
-        console.log("win");
         moveIndex = move["win"];
         break;
       case "block" in move:
-        console.log("block");
         moveIndex = move["block"];
         break;
       default:
         predictWin();
         if ("predict" in move) {
-          console.log("predict");
           moveIndex = move["predict"];
         } else {
           if (boardArray[4] == " ") {
             moveIndex = 4;
-            console.log("center");
           } else {
-            console.log("corner");
             moveIndex = getAvailableCorner();
           }
         }
